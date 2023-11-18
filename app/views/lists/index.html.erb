@@ -1,8 +1,22 @@
-<h1>My lists</h1>
-<ul>
-  <% @lists.each do |list|%>
-    <li><%= link_to list.name, list_path(list) %></li>
-  <% end %>
-</ul>
+<div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(<%= @banner_url %>)">
+  <div class="container">
+    <h1>Create your <strong>movies list</strong> with <strong>impressive bookmarks</strong>!</h1>
+    <p>Who said that your movies list should be boring?</p>
+  </div>
+</div>
 
-<%= link_to "Create a new list", new_list_path%>
+
+<%= link_to "Create a new list", new_list_path, class: "btn btn-success mt-3"%>
+
+
+  <ul>
+    <% @lists.each do |list|%>
+        <div>
+          <%if list.photo.attached?%>
+            <%= cl_image_tag list.photo.key, height: 300, width: 400, crop: :fill%>
+          <% end %>
+          <li><%= link_to list.name, list_path(list)%>
+          <%= link_to "Update this list", edit_list_path(list)%></li>
+        <div>
+    <% end %>
+  </ul>

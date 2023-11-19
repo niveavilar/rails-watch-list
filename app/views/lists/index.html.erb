@@ -5,18 +5,20 @@
   </div>
 </div>
 
+<div class="nav-link d-flex mt-3 justify-content-between mx-4">
+  <h4 class="mt-1">My lists</h4>
+  <%= link_to "Create a new list", new_list_path, class: "btn btn-success"%>
+</div>
 
-<%= link_to "Create a new list", new_list_path, class: "btn btn-success mt-3"%>
-
-
-  <ul>
-    <% @lists.each do |list|%>
-        <div>
-          <%if list.photo.attached?%>
-            <%= cl_image_tag list.photo.key, height: 300, width: 400, crop: :fill%>
-          <% end %>
-          <li><%= link_to list.name, list_path(list)%>
-          <%= link_to "Update this list", edit_list_path(list)%></li>
-        <div>
-    <% end %>
-  </ul>
+<div class="row m-2">
+  <% @lists.each do |list|%>
+    <div class ="col-12 col-sm-6 col-md-3 mb-3">
+      <%= link_to list_path(list), class:"text-decoration-none" do %>
+        <div class="card-category mt-2" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(<%= list.photo.attached? ? cl_image_path(list.photo.key, height: 200, width: 300, crop: :fill) :asset_path('cinema.jpg')%>)">
+          <%= list.name.capitalize %>
+        </div>
+      <%end%>
+      <%= link_to "Change this list", edit_list_path(list), class: "text-dark text-decoration-none"%>
+    </div>
+  <% end %>
+</div>

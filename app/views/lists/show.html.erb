@@ -1,10 +1,25 @@
-<h1><%= @list.name %></h1>
+<div class="list-banner" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(<%= @list.photo.attached? ? cl_image_path(@list.photo.key, crop: :fill) :asset_path('cinema.jpg')%>)">
+  <div class="container">
+    <h1><%= @list.name %></h1>
+  </div>
+</div>
+
 <%= link_to "Create a movie", new_list_bookmark_path(@list)%>
-<ul>
-<% @list.bookmarks.each do |bookmark|%>
-  <li><strong><%= bookmark.movie.title%></strong> <br> <%= bookmark.comment%> <br>
-  <%= link_to "delete this bookmark", list_bookmark_path(bookmark), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} %></li>
-<% end %>
-</ul>
+
+  <% @list.bookmarks.each do |bookmark|%>
+    <div class="card-list col-12 col-sm-6 col-md-4 mb-4">
+      <%= image_tag bookmark.movie.poster_url, alt: bookmark.movie.title, class: "movie-img rounded-top"%>
+      <div class="card-list-infos">
+        <div>
+          <p><strong><%= bookmark.movie.title%></strong> • <%= bookmark.movie.rating%> <i class="yellow-star fa-solid fa-star"></i> </p>
+          <p><%= bookmark.movie.overview%> </p>
+        </div>
+      </div>
+      <div class="card-bottom d-flex justify-content-between p-2">
+        <p><em><i class="fa-solid fa-quote-left p-1"></i><%=bookmark.comment%></em></p>
+        <%= link_to "delete", list_bookmark_path(bookmark), class: "text-decoration-none text-warning", data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} %>
+    </div>
+    </div>
+  <% end %>
 
 <%= link_to "Go back to all my lists", lists_path%>

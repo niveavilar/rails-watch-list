@@ -1,0 +1,40 @@
+.list-banner {
+  background-size: cover;
+  text-align: center;
+  background-position: center;
+  padding: 100px 0;
+  color: #ffffff;
+  text-shadow: 3px 3px 3px black;
+}
+
+.yellow-star {
+  color: rgb(199, 199, 4);
+}
+
+.movie-img {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+  object-position: center;
+}
+
+.card-list {
+  width: 400px;
+  background: white;
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+}
+
+.card-list p {
+  font-size: 12px;
+  opacity: .7;
+  margin: 0;
+}
+
+
+.card-list .card-list-infos {
+  padding: 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  position: relative;
+}

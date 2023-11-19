@@ -3,15 +3,39 @@
 @import "avatar";
 @import "form_legend_clear";
 @import "navbar";
-
-.nav-link {
-  text-decoration: none;
-}
+@import "show";
 
 .banner {
   background-size: cover;
   background-position: center;
-  padding: 150px 0;
-  color: white;
+  padding: 100px 0;
+  color: #ffffff;
   text-shadow: 3px 3px 3px black;
+}
+
+.cards {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+}
+
+.card-category {
+  height: 200px;
+  width: 300px;
+  display: flex;
+  color: #ffffff;
+  border-radius: 5px;
+  font-size: 24px;
+  font-weight: bold;
+  justify-content: center;
+  text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  align-items: center;
+
+  &:hover {
+    box-shadow: 0 0 15px rgba(0,0,0,0.4);
+    transition: 0.3s;
+    opacity: 0.8;
+  }
+
+
 }
